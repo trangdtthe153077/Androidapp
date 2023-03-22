@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Context;
 import com.example.firebase.ChaptersActivity;
 import com.example.firebase.Interface.IRecyclerItenClickListener;
 import com.example.firebase.Model.Common;
 
 
 public class MyComicAdapter {
+    Context context;
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i){
         myViewHolder.setRecyclerItenClickListener(new IRecyclerItenClickListener() {
             @Override

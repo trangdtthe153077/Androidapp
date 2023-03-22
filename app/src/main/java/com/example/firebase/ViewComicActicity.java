@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.firebase.Adapter.MyViewPaperAdapter;
 import com.example.firebase.Model.Chapter;
 import com.example.firebase.Model.Common;
 
