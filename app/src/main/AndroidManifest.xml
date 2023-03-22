@@ -19,6 +19,9 @@
             android:name=".RegisterActivity">
         </activity>
         <activity
+            android:name=".LogoutActivity">
+        </activity>
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
