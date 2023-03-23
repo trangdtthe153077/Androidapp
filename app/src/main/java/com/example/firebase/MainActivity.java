@@ -97,7 +97,7 @@ for(DataSnapshot bannerSnapshot:snapshot.getChildren())
     bannerList.add(image);
 }
 
-                Log.d("a",bannerList.get(1));
+
                 bannerListener.onBannerLoadDoneListener(bannerList);
             }
 

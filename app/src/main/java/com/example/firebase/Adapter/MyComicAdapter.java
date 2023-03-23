@@ -3,6 +3,7 @@ package com.example.firebase.Adapter;
 import static com.example.firebase.Model.Common.comicList;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -52,11 +53,15 @@ View itemView = inflater.inflate(R.layout.comic_item,parent,false);
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Picasso.get().load(comics.get(position).Image).into(holder.comic_image);
         holder.comic_name.setText(comics.get(position).Name);
-        myViewHolder.setRecyclerItenClickListener(new IRecyclerItenClickListener() {
+        holder.setRecyclerItenClickListener(new IRecyclerItenClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Common.comicSelected = comicList.get(position);
-                context.startActivity(new Intent(context, ChaptersActivity.class));
+                Log.d("a","dgfg"+position);
+                Common.comicSelected = comics.get(position);
+
+                Intent i = new Intent(context,ChaptersActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
             }
         });
     }
@@ -81,7 +86,7 @@ View itemView = inflater.inflate(R.layout.comic_item,parent,false);
 
         @Override
         public void onClick(View v) {
-            recyclerItenClickListener.onClick(view,getAdapterPosition());
+            recyclerItenClickListener.onClick(v,getAdapterPosition());
         }
         TextView comic_name;
         ImageView comic_image;

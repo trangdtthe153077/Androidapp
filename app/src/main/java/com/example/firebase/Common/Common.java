@@ -7,4 +7,5 @@ import java.util.List;
 
 public class Common{
     public static List<Comic> comicList = new ArrayList<>();
+
 }

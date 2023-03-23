@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class ChaptersActivity extends AppCompatActivity {
             }
         }));
 
+        Log.i("a","comic"+Common.comicSelected.Name);
         fetchChapter(Common.comicSelected);
     }
 
@@ -52,4 +54,5 @@ public class ChaptersActivity extends AppCompatActivity {
         recycler_chapter.setAdapter(new MyChapterAdapter(this, comicSelected.Chapters));
         txt_chapter_name.setText(new StringBuilder("CHAPTERS(").append(comicSelected.Chapters.size()).append(")"));
     }
+
 }

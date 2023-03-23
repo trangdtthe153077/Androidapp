@@ -14,7 +14,9 @@ import com.example.firebase.Interface.IRecyclerItenClickListener;
 import com.example.firebase.Model.Chapter;
 import com.example.firebase.Model.Common;
 import com.example.firebase.R;
+
 import com.example.firebase.ViewComicActicity;
+
 
 import java.util.List;
 
@@ -32,20 +34,20 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyVi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = inflater.inflate(R.layout.chapter_item,viewGroup,false);
+        View itemView = inflater.inflate(R.layout.chapter_item,parent,false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        myViewHolder.txt_chapter_numb.setText(chapterList.get(position).Name);
+        holder.txt_chapter_numb.setText(chapterList.get(position).Name);
 
-        myViewHolder.setRecyclerItenClickListener(new IRecyclerItenClickListener() {
+        holder.setRecyclerItenClickListener(new IRecyclerItenClickListener() {
             @Override
             public void onClick(View view, int position) {
                 Common.chapterSelected = chapterList.get(position);
                 Common.chapterIndex = position;
-                context.startActivity(new Intent(context,ViewComicActicity.class));
+           context.startActivity(new Intent(context,ViewComicActicity.class));
             }
         });
     }
@@ -65,14 +67,14 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyVi
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            txt_chapter_numb = (TextView) itemView.findViewById(R.id.txt_chapter_numb);
+            txt_chapter_numb = (TextView) itemView.findViewById(R.id.txt_chapter_name);
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            recyclerItenClickListener.onClick(view, getAdapterPosition());
+            recyclerItenClickListener.onClick(v, getAdapterPosition());
 
         }
     }

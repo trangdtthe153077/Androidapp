@@ -1,3 +1,4 @@
+
 package com.example.firebase;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firebase.Adapter.MyViewPaperAdapter;
+import com.example.firebase.Model.BookFLipPageTransformer4;
 import com.example.firebase.Model.Chapter;
 import com.example.firebase.Model.Common;
 
@@ -63,7 +65,7 @@ public class ViewComicActicity extends AppCompatActivity {
 
                 txt_chapter_name.setText(Common.formatString(Common.chapterSelected.Name));
 
-                BookFlipPageTransformer bookFlipPageTransformer = new BookFlipPageTransformer();
+                BookFLipPageTransformer4 bookFlipPageTransformer = new BookFLipPageTransformer4();
                 bookFlipPageTransformer.setScaleAmountPercent(10f);
                 viewPager.setPageTransformer(true,bookFlipPageTransformer);
             }
@@ -74,5 +76,5 @@ public class ViewComicActicity extends AppCompatActivity {
         else{
             Toast.makeText(this, "This chapter is translating...", Toast.LENGTH_SHORT).show();
         }
-    }
-}
+    }}
+
