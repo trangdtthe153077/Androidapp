@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +35,7 @@ import java.util.List;
 import ss.com.bannerslider.Slider;
 
 public class MainActivity extends AppCompatActivity implements IComicLoadDone {
-
+    private Button btnlougout;
     Slider slider;
     DatabaseReference banners;
     DatabaseReference comics;
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements IComicLoadDone {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        banners= FirebaseDatabase.getInstance("https://androidproject-da7c5-default-rtdb.firebaseio.com").getReference("Banner");
+        banners= FirebaseDatabase.getInstance("https://androidproject-da7c5-default-rtdb.firebaseio.com").getReference("Banners");
         comics= FirebaseDatabase.getInstance("https://androidproject-da7c5-default-rtdb.firebaseio.com").getReference("Comic");
         slider = (Slider) findViewById(R.id.slider);
         Slider.init(new PicassoLoadingService());
@@ -57,7 +60,16 @@ bannerListener=this::onBannerLoadDoneListener;
         recycler_comic=(RecyclerView) findViewById(R.id.recycler_comic);
         recycler_comic.setHasFixedSize(true);
         recycler_comic.setLayoutManager(new GridLayoutManager(this,2));
+        btnlougout = findViewById(R.id.logout_btn);
 
+
+        btnlougout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                logout();
+            }
+        });
     }
 
     public void  LoadComic()
@@ -120,5 +132,13 @@ slider.setAdapter(new MySliderAdapter(banners));
 
         recycler_comic.setAdapter(new MyComicAdapter( getBaseContext(),comicList));
 
+    }
+
+    private void logout() {
+        Toast.makeText(getApplicationContext(), "Logout Successful.", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+        finish();
     }
 }

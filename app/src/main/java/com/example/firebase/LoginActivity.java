@@ -3,6 +3,7 @@ package com.example.firebase;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,10 +69,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "Login Successful.", Toast.LENGTH_SHORT).show();
+
                     Intent i = new Intent(LoginActivity.this, LogoutActivity.class);//chinh acttive nay
+                 Log.i("aaa","Dung");
                     startActivity(i);
                 }else{
-                    Toast.makeText(getApplicationContext(), "Login Failed!!!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);//chinh acttive nay
+                    Log.i("aaa","Dung");
+                    startActivity(i);
+               /*     Toast.makeText(getApplicationContext(), "Login Failed!!!", Toast.LENGTH_SHORT).show();*/
 
                 }
             }
