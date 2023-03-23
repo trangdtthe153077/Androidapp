@@ -59,7 +59,13 @@ public class ViewComicActicity extends AppCompatActivity {
         if(chapter.Links != null){
             if(chapter.Links.size()>0){
                 MyViewPaperAdapter adapter = new MyViewPaperAdapter(getBaseContext(), chapter.Links);
+                viewPager.setAdapter(adapter);
 
+                txt_chapter_name.setText(Common.formatString(Common.chapterSelected.Name));
+
+                BookFlipPageTransformer bookFlipPageTransformer = new BookFlipPageTransformer();
+                bookFlipPageTransformer.setScaleAmountPercent(10f);
+                viewPager.setPageTransformer(true,bookFlipPageTransformer);
             }
             else{
                 Toast.makeText(this, "No image here", Toast.LENGTH_SHORT).show();

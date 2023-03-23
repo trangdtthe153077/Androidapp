@@ -38,7 +38,7 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        myViewHolder.txt_chapter_numb.setText(chapterList.get(i).Name);
+        myViewHolder.txt_chapter_numb.setText(chapterList.get(position).Name);
 
         myViewHolder.setRecyclerItenClickListener(new IRecyclerItenClickListener() {
             @Override

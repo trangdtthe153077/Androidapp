@@ -10,7 +10,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 
 import com.example.firebase.R;
-
+import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MyViewPaperAdapter extends PagerAdapter {
@@ -43,6 +43,12 @@ public class MyViewPaperAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position){
         View image_layout = inflater.inflate(R.layout.view_paper_item, container, false);
+
+        PhotoView page_image = (PhotoView) image_layout.findViewById(R.id.page_image);
+        Picasso.get().load(imageLinks.get(position));
+
+        container.addView(image_layout);
+        return image_layout;
     }
 
 }
